@@ -11,7 +11,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import RestaurantsScreen from "./src/features/restaurants/screens/restaurants.screen";
 import Ionicons from "@expo/vector-icons/Ionicons";
-
+import { restaurantsRequest } from "./src/services/restaurants/restaurants.service";
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
