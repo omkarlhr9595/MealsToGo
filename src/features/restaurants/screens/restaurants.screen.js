@@ -38,10 +38,6 @@ const restaurantsScreen = () => {
           { name: 8 },
           { name: 9 },
           { name: 10 },
-          { name: 11 },
-          { name: 12 },
-          { name: 13 },
-          { name: 14 },
         ]}
         renderItem={() => {
           return (
