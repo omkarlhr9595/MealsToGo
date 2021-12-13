@@ -33,7 +33,7 @@ const LoadingContainer = styled.View`
 
 const restaurantsScreen = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-  console.log(error);
+  // console.log(error);
   return (
     <Container>
       {isLoading && (
