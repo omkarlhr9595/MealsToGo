@@ -29,7 +29,7 @@ const LoadingContainer = styled.View`
   left: 50%;
 `;
 
-const restaurantsScreen = () => {
+const RestaurantsScreen = () => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
   // console.log(error);
   return (
@@ -56,4 +56,4 @@ const restaurantsScreen = () => {
   );
 };
 
-export default restaurantsScreen;
+export default RestaurantsScreen;
