@@ -5,7 +5,8 @@ import {
   FlatList,
   TouchableWithoutFeedback,
   Pressable,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from "react-native";
 import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
@@ -18,6 +19,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 
 const Container = styled(View)`
   flex: 1;
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 
 const RestaurantList = styled(FlatList).attrs({

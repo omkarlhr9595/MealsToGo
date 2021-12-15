@@ -10,6 +10,7 @@ import { theme } from "./src/infrastructure/theme";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
 import {Navigation} from './src/infrastructure/navigation'
+import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 
 export default function App() {
   const [oswalLoaded] = useOswald({
@@ -32,10 +33,11 @@ export default function App() {
           </RestaurantsContextProvider>
         </LocationContextProvider>
       </ThemeProvider>
-      <StatusBar
+      <ExpoStatusBar style="auto"/>
+      {/* <StatusBar
         backgroundColor={theme.colors.bg.secondary}
         barStyle="dark-content"
-      />
+      /> */}
     </>
   );
 }
