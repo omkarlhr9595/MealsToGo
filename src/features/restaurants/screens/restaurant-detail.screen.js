@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { ScrollView, View } from "react-native";
+import { ScrollView, View,StatusBar } from "react-native";
 import { List } from "react-native-paper";
-
+import styled from "styled-components";
 import RestaurantInfoCard from "../components/restaurant-info-card.component";
+
+const SafeView = styled(View)`
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+`;
 
 export const RestaurantDetailScreen = ({ route }) => {
   const [breakfastExpanded, setBreakfastExpanded] = useState(false);
@@ -12,7 +16,7 @@ export const RestaurantDetailScreen = ({ route }) => {
 
   const { restaurant } = route.params;
   return (
-    <>
+    <SafeView>
       <RestaurantInfoCard restaurant={restaurant} />
       <ScrollView>
         <List.Accordion
@@ -60,6 +64,6 @@ export const RestaurantDetailScreen = ({ route }) => {
           <List.Item title="Fanta" />
         </List.Accordion>
       </ScrollView>
-    </>
+    </SafeView>
   );
 };
