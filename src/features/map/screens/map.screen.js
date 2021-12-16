@@ -4,14 +4,16 @@ import styled from "styled-components/native";
 import Search from "../components/search.component";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { LocationContext } from "../../../services/location/location.context";
-
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { View, Text } from "react-native";
+import { theme } from "../../../../src/infrastructure/theme/";
+import {MapCallout} from "../components/map-callout.component";
 const Map = styled(MapView)`
   height: 100%;
 `;
-
 export const MapScreen = () => {
   const { location } = useContext(LocationContext);
-  const { restaurant = [] } = useContext(RestaurantsContext);
+  const { restaurants = [] } = useContext(RestaurantsContext);
   const [letDelta, setLetDelta] = useState(0);
   const { viewport, lat, lng } = location;
   useEffect(() => {
@@ -32,8 +34,21 @@ export const MapScreen = () => {
           longitudeDelta: 0.02,
         }}
       >
-        {restaurant.map((restaurant) => {
-          return null;
+        {restaurants.map((restaurant) => {
+          return (
+            <MapView.Marker
+              key={restaurant.name}
+              title={restaurant.name}
+              coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+              }}
+            >
+              <MapView.Callout>
+                <MapCallout restaurant={restaurant}/>
+              </MapView.Callout>
+            </MapView.Marker>
+          );
         })}
       </Map>
     </>
