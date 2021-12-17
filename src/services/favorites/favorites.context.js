@@ -1,9 +1,9 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 export const FavoritesContext = createContext();
 
 export const FavoritesContextProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([initialState]);
+  const [favorites, setFavorites] = useState([]);
   const add = (restaurant) => {
     setFavorites([...favorites, restaurant]);
   };

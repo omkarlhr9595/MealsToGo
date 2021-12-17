@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -6,13 +6,14 @@ import {
   TouchableWithoutFeedback,
   Pressable,
   TouchableOpacity,
-  StatusBar
+  StatusBar,
 } from "react-native";
 import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
 
 import ResrtaurantInfoCard from "../components/restaurant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { FavoritesBar } from "../../../components/favorites/favorites-bar.component";
 import Search from "../components/search.component";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
@@ -39,7 +40,7 @@ const LoadingContainer = styled.View`
 
 const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
-  // console.log(error);
+  const [isToggled, setIsToggled] = useState(false);
   return (
     <Container>
       {isLoading && (
@@ -48,15 +49,21 @@ const RestaurantsScreen = ({ navigation }) => {
         </LoadingContainer>
       )}
 
-      <Search />
+      <Search
+        isFavoritesToggled={isToggled}
+        onFavoritesToggle={() => setIsToggled(!isToggled)}
+      />
+      {isToggled?<FavoritesBar/>:null}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate("RestaurantDetail",{
-                restaurant:item
-              })}
+              onPress={() =>
+                navigation.navigate("RestaurantDetail", {
+                  restaurant: item,
+                })
+              }
             >
               <Spacer position="bottom" size="large">
                 <ResrtaurantInfoCard restaurant={item} />
