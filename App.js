@@ -32,22 +32,6 @@ if (!firebase.apps.length) {
 }
 
 export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword("omkarlohar@gmail.com", "password")
-        .then((user) => {
-          console.log(user);
-          setIsAuthenticated(true);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    }, 2000);
-  }, []);
 
   const [oswalLoaded] = useOswald({
     Oswald_400Regular,
@@ -59,8 +43,6 @@ export default function App() {
   if (!oswalLoaded || !latoLoaded) {
     return null;
   }
-
-  if (!isAuthenticated) return null;
 
   return (
     <>

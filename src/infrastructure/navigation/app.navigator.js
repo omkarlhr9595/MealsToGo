@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text } from 'react-native';
 
-import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import {RestaurantsNavigator} from './restaurants.navigator';
@@ -32,16 +31,13 @@ const createScreenOptions = ({ route }) => {
 const Settings = () => <Text>Settings</Text>;
 
 
-const AppNavigator = () => {
+export const AppNavigator = () => {
     return (
-      <NavigationContainer>
         <Tab.Navigator screenOptions={createScreenOptions}>
           <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
           <Tab.Screen name="Map" component={MapScreen} />
           <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
-      </NavigationContainer>
     );
 }
 
-export default AppNavigator
