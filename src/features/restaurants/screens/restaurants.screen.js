@@ -17,6 +17,7 @@ import { FavoritesBar } from "../../../components/favorites/favorites-bar.compon
 import Search from "../components/search.component";
 
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { FavoritesContext } from "../../../services/favorites/favorites.context";
 
 const Container = styled(View)`
   flex: 1;
@@ -40,6 +41,7 @@ const LoadingContainer = styled.View`
 
 const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, error, restaurants } = useContext(RestaurantsContext);
+  const { favorites } = useContext(FavoritesContext);
   const [isToggled, setIsToggled] = useState(false);
   return (
     <Container>
@@ -53,7 +55,9 @@ const RestaurantsScreen = ({ navigation }) => {
         isFavoritesToggled={isToggled}
         onFavoritesToggle={() => setIsToggled(!isToggled)}
       />
-      {isToggled?<FavoritesBar/>:null}
+      {isToggled ? (
+        <FavoritesBar favorites={favorites} onNavigate={navigation.navigate} />
+      ) : null}
       <RestaurantList
         data={restaurants}
         renderItem={({ item }) => {
