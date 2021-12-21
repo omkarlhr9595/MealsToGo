@@ -6,10 +6,9 @@ import {
 } from "@react-navigation/stack";
 
 import RestaurantsScreen from "../../features/restaurants/screens/restaurants.screen";
-import {RestaurantDetailScreen} from "../../features/restaurants/screens/restaurant-detail.screen";
+import { RestaurantDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
 
 const RestaurantStack = createStackNavigator();
-
 
 export const RestaurantsNavigator = () => {
   return (
