@@ -11,11 +11,11 @@ import {
 import { Searchbar, ActivityIndicator, Colors } from "react-native-paper";
 import styled from "styled-components/native";
 
-import ResrtaurantInfoCard from "../components/restaurant-info-card.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { FavoritesBar } from "../../../components/favorites/favorites-bar.component";
 import Search from "../components/search.component";
-
+import { RestaurantList } from "../components/restaurant-list.styles";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { FavoritesContext } from "../../../services/favorites/favorites.context";
 
@@ -23,12 +23,6 @@ const Container = styled(View)`
   flex: 1;
   ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
-
-const RestaurantList = styled(FlatList).attrs({
-  contentContainerStyle: {
-    padding: 16,
-  },
-})``;
 
 const Loading = styled(ActivityIndicator)`
   margin-left: -25px;
@@ -70,7 +64,7 @@ const RestaurantsScreen = ({ navigation }) => {
               }
             >
               <Spacer position="bottom" size="large">
-                <ResrtaurantInfoCard restaurant={item} />
+                <RestaurantInfoCard restaurant={item} />
               </Spacer>
             </TouchableOpacity>
           );

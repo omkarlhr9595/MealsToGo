@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { ScrollView, View,StatusBar } from "react-native";
+import { ScrollView, View, StatusBar } from "react-native";
 import { List } from "react-native-paper";
 import styled from "styled-components";
-import RestaurantInfoCard from "../components/restaurant-info-card.component";
+import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 
 const SafeView = styled(View)`
-  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
+  ${StatusBar.currentHeight && `margin-top: ${StatusBar.currentHeight}px`};
 `;
 
 export const RestaurantDetailScreen = ({ route }) => {
