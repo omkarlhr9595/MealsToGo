@@ -4,14 +4,25 @@ import firebase from "firebase/compat";
 export const AuthenticationContext = createContext();
 
 export const AuthenticationContextProvider = ({ children }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [error, setError] = useState();
+
+  // firebase.auth().onAuthStateChanged((usr) => {
+  //   if (usr) {
+  //     setUser(usr);
+  //     setIsLoading(false);
+  //   } else {
+  //     setIsLoading(false);
+  //   }
+  // });
+
   const onLogin = (email, password) => {
+    setIsLoading(true);
     loginRequest(email, password)
       .then((u) => {
-        setUser(u);
         setIsLoading(false);
+        setUser(u);
       })
       .catch((e) => {
         setIsLoading(false);
@@ -19,6 +30,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       });
   };
   const onRegister = (email, password, repeatedPasseord) => {
+    setIsLoading(true);
     if (password !== repeatedPasseord) {
       setError("Error: Passwords do not match");
       return;
