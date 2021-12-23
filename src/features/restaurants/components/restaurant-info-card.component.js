@@ -1,7 +1,4 @@
 import React from "react";
-import styled from "styled-components/native";
-import { View, Image } from "react-native";
-import { Card } from "react-native-paper";
 import { SvgXml } from "react-native-svg";
 
 import star from "../../../../assets/star";
@@ -38,7 +35,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
 
   return (
-    <RestaurantCard elevation={5}>
+    <RestaurantCard elevation={1}>
       <Favorite restaurant={restaurant} />
       <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
